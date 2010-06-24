@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load extratags %}
+{% block body %}
+<h2>{{tablename}} - Build <a href="/{{build}}/">{{build}}</a></h2>
+<small>{{ table|length }} rows total</small>
+<table>
+	<thead>
+		{% for column in table.structure.column_names %}
+		<th>{{ column }}</th>
+		{% endfor %}
+	</thead>
+	<tbody>
+		{% for id, row in table.items %}
+		<tr id="{{id}}">
+			{% for field in row %}
+			<td>
+				{% if field|has_relation %}
+					<a href="/{{build}}/{{field|get_relation}}/#{{field}}">{{field}}</a>
+				{% else %}
+					{{field}}
+				{% endif %}
+			</td>
+			{% endfor %}
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+abc
+{% endblock %}
