@@ -12,12 +12,12 @@
 	<tbody>
 		{% for id, row in table.items %}
 		<tr id="{{id}}">
-			{% for field in row %}
+			{% for value, field in row|zip:row.structure %}
 			<td>
-				{% if field|has_relation %}
-					<a href="/{{build}}/{{field|get_relation}}/#{{field}}">{{field}}</a>
+				{% if value and field|has_relation %}
+					<a href="/{{build}}/{{field|get_relation:value}}/#{{value}}">{{value}}</a>
 				{% else %}
-					{{field}}
+					{{value}}
 				{% endif %}
 			</td>
 			{% endfor %}
@@ -25,5 +25,4 @@
 		{% endfor %}
 	</tbody>
 </table>
-abc
 {% endblock %}

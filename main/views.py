@@ -11,7 +11,10 @@ ENVIRONMENTS = {}
 def get_environment(build):
 	build = int(build)
 	if build not in ENVIRONMENTS:
-		ENVIRONMENTS[build] = Environment(build)
+		try:
+			ENVIRONMENTS[build] = Environment(build)
+		except ValueError:
+			raise Http404
 	
 	return ENVIRONMENTS[build]
 
@@ -23,3 +26,5 @@ def tableview(request, build, tablename):
 	table = env[tablename]
 	return render_to_response("tableview.html", {"build": build, "table": table, "tablename": os.path.basename(table.file.name)})
 
+def buildview(request, build):
+	return render_to_response("buildview.html", {"build": build, "environment": get_environment(build)})
