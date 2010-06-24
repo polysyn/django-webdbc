@@ -7,8 +7,7 @@ register = template.Library()
 
 @register.filter
 def zip(value, arg):
-	_zip = __builtins__["zip"] # XXX: WTF django? Dict instead of module?
-	return _zip(value, arg)
+	return __builtins__["zip"](value, arg)
 
 @register.filter
 def sort(arg):
