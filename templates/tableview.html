@@ -2,7 +2,20 @@
 {% load extratags %}
 {% block body %}
 <h2>{{tablename}} - Build <a href="/{{build}}/">{{build}}</a></h2>
-<small>{{ table|length }} rows total</small>
+<p>
+	<small>Showing rows {{min}}-{{max}} out of {{ table|length }}</small><br/>
+	<div id="paging-top">
+		{% if page > 1 %}
+			<a href="?p=1">« First</a>
+			<a href="?p={{page|add:-1}}">‹ Prev</a>
+		{% endif %}
+		<strong>Page {{page}}</strong>
+		{% if page < page_max %}
+			<a href="?p={{page|add:1}}">Next ›</a>
+			<a href="?p={{page_max}}">Last »</a>
+		{% endif %}
+	</div>
+</p>
 <table>
 	<thead>
 		{% for column in table.structure.column_names %}
@@ -10,8 +23,8 @@
 		{% endfor %}
 	</thead>
 	<tbody>
-		{% for id, row in table.items %}
-		<tr id="{{id}}">
+		{% for row in data %}
+		<tr id="{{row.id}}">
 			{% for value, field in row|zip:row.structure %}
 			<td>
 				{% if value and field|has_relation %}
