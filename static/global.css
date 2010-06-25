@@ -1,0 +1,28 @@
+body {
+	font-size: 15px;
+}
+
+table {
+	border-collapse: collapse;
+	border: 1px solid #666;
+	margin: 5px auto 10px;
+	text-align: center;
+	width: 98%;
+	white-space: nowrap;
+}
+
+thead th {
+	border: 1px solid #666;
+	padding: 5px 15px;
+	text-transform: uppercase;
+}
+
+table th:first-child,
+table td:first-child {
+	text-align: left;
+}
+
+table td {
+	border: 1px solid #666;
+	padding: 1px 15px;
+}
