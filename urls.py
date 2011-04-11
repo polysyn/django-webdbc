@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
-from django.conf.urls.defaults import *
+from django.conf import settings
+from django.conf.urls.defaults import patterns, include, url
 
 urlpatterns = patterns("",
-	(r"^static/(?P<path>.*)$", "django.views.static.serve", {"document_root": "/home/adys/src/git/webdbc/static"}),
-	(r"^", include("webdbc.main.urls")),
+	url(r"^static/(?P<path>.*)$", "django.views.static.serve", {"document_root": settings.MEDIA_ROOT}),
+	url(r"^", include("webdbc.main.urls")),
 )
