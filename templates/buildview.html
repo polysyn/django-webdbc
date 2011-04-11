@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load extratags %}
+{% block body %}
+<h2>Build {{build}}</h2>
+<small>{{ environment|length }} files</small>
+<table>
+	<thead>
+		<th>File</th>
+		<th>Size</th>
+	</thead>
+	<tbody>
+	{% for file in environment|sort %}
+		<tr>
+			<td><a href="{{file}}">{{file}}</a>
+			<td>{{file.size}}</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+{% endblock %}
