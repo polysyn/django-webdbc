@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 # Django settings for ircquotes project.
 
+import os.path
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -49,6 +51,10 @@ ADMIN_MEDIA_PREFIX = "/media/"
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = "w0(vt01fc(%go*hgpnv2e7i1)zq!j)atd8y$w)sgu!2i(6b(n8"
+
+TEMPLATE_DIRS = (
+	os.path.join(os.path.dirname(os.path.abspath(__file__)), "templates"),
+)
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
