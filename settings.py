@@ -96,6 +96,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = "webdbc.urls"
 
 INSTALLED_APPS = (
+	"django.contrib.staticfiles",
 	"webdbc.main",
 )
 
