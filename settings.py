@@ -1,9 +1,8 @@
-# -*- coding: utf-8 -*-
 # Django settings for webdbc project.
 
-import os.path
+import os
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -11,11 +10,6 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
-
-DATABASES = {
-	"default": {
-	}
-}
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -123,11 +117,7 @@ LOGGING = {
 	}
 }
 
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-
-
-# Unversioned local overrides
 try:
-	from settings_override import *
+	from local_settings import *
 except ImportError:
 	pass
